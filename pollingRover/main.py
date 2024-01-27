@@ -128,13 +128,13 @@ def pollerSystem():
 
         print("DC MOTOR STATS: ")
         for x in range(sizeDC):
-            print("DC MOTOR #"+x)
+            print("DC MOTOR #", x)
             print("---------------")
             print("Input voltage status: " + ("FAULTY!!!!!!" if inputDC[x] == False else "Correct"))
             print("Connection status:"+ (" FAILED " if connectionDC[x] == False else " SUCCESS"))
 
         for y in range(sizeS):
-            print("Servo MOTOR #"+ y)
+            print("Servo MOTOR #", y)
             print("---------------")
             print("Input voltage status: " + ("FAULTY!!!!!!" if inputS[x] == False else "Correct"))
             print("Connection status:" + (" FAILED " if connectionS[x] == False else " SUCCESS"))
