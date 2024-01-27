@@ -22,14 +22,11 @@ def inputVoltage(number, type):
             prev = inputDC[number]
             if abs(second - first < 1) and not(22 <= second <= 26):
                 inputDC[number] = False
-<<<<<<< HEAD
         elif(type == motors_S):
-=======
                 if prev != inputDC[number]: CDetected = True
                 
         elif(type == motors_S):
             prev = inputS[number]
->>>>>>> e9a3fd8ffc82ffabdf20b71f2e566600be0775c2
             if abs(second - first < 1) and not(11.5 <= second <= 12.5):
                 inputS[number] = False
                 if prev != inputS[number]: CDetected = True
@@ -48,21 +45,15 @@ def turnedOnConnectionServo(number):
     try:
         prev = connectionS[number]
         if motors_S[number].getAttached():
-<<<<<<< HEAD
             print("The Servo motor #%d is attached"% number)
             if motors_S[number].getIsOpen():
                 print("The Servo motor #%d is open"% number)
-=======
             if motors_S[number].getIsOpen():
->>>>>>> e9a3fd8ffc82ffabdf20b71f2e566600be0775c2
                 connectionS[number] = True
                 if prev != connectionS[number]: CDetected = True
                 
             else:
-<<<<<<< HEAD
                 print("The Servo motor #%d is not open" % number)
-=======
->>>>>>> e9a3fd8ffc82ffabdf20b71f2e566600be0775c2
                 motors_S[number].openWaitForAttachment(1000)
                 connectionS[number] = False
                 if prev != connectionS[number]: CDetected = True
@@ -114,7 +105,6 @@ def printer():
         time.sleep(1)
         CDetected = False 
 
-<<<<<<< HEAD
 def pollerSystem():
     while True:
         #  clear the terminal
@@ -150,7 +140,6 @@ def pollerSystem():
             print("Connection status:" + (" FAILED " if connectionS[x] == False else " SUCCESS"))
 
         time.sleep(1)
-=======
 
 def pollerSystem():
     CDetected = True
@@ -168,7 +157,6 @@ def pollerSystem():
 
         for threadSS in threads_servo:
             threadSS.join()
->>>>>>> e9a3fd8ffc82ffabdf20b71f2e566600be0775c2
 
         for threadd in threads_dc:
             threadd.join()
