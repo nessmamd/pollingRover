@@ -17,7 +17,7 @@ groundS = [False]*sizeS
 
 def inputVoltage(number, identifier, theArray):
         second = theArray[number].getVoltage()
-        print("Debugger statement: it is ", second)
+        print("Voltage statement: it is ", second)
         if(identifier == 2):
             if not(22 <= second <= 26):
                 inputDC[number] = False
@@ -33,7 +33,7 @@ def inputVoltage(number, identifier, theArray):
 
 # the two other functions you need to see if there is a change or not
 def turnedOnConnectionServo(number, motorsArray):
-
+        motors_S = motorsArray
         prev = connectionS[number]
         if motors_S[number].getAttached():
             print("The Servo motor #%d is attached"% number)
@@ -60,14 +60,14 @@ def turnedOnConnectionDC(number, motorsArray):
         print("boolean ", motors[number].getAttached())
         if motors[number].getAttached():
             print("The DC motor #%d is attached"% number)
-            if motors[number].getIsOpen():
-                print("The DC motor #%d is open"% number)
-                connectionDC[number] = True
-                # if prev != connectionDC[number]: CDetected = True
-            else:
-                print("The DC motor #%d is not open" % number)
-                motors[number].openWaitForAttachment(1000)
-                connectionDC[number] = False
+            # if motors[number].getIsOpen():
+            #     print("The DC motor #%d is open"% number)
+            #     connectionDC[number] = True
+            #     # if prev != connectionDC[number]: CDetected = True
+            # else:
+            #     print("The DC motor #%d is not open" % number)
+            #     motors[number].openWaitForAttachment(1000)
+            #     connectionDC[number] = False
                 # if prev != connectionDC[number]: CDetected = True
             inputVoltage(number, 2, motorsArray)
         else: 
