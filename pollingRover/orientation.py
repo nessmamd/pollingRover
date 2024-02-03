@@ -80,7 +80,6 @@ def connect_motor(motor):
         print("Drive motor Failed to connect.")
 
 def init_motor(motor, currentLimit):
-    print("motors,", motor)
     print("motors,", motor.getAttached())
     if motor.getAttached():
         motor.setDeviceSerialNumber(697270)
