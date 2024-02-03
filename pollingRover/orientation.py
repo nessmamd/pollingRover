@@ -31,7 +31,8 @@ baseControls = ['d', 'a'] # change this to change the controls of the Base motor
 
 shoulderIndex = 1
 shoulderControls = ['w', 's'] # change this to change the controls of the Shoulder motor
-
+global newer 
+newer = []
 elbowIndex = 2
 elbowControls = ['r', 'f'] # change this to change the controls of the Elbow motor
 
@@ -76,15 +77,20 @@ def connect_motor(motor):
     try:
         motor.openWaitForAttachment(5000)
     except:
-        print("Failed to connect.")
+        print("Drive motor Failed to connect.")
 
 def init_motor(motor, currentLimit):
+    print("motors,", motor)
+    print("motors,", motor.getAttached())
     if motor.getAttached():
         motor.setDeviceSerialNumber(697270)
         motor.setCurrentLimit(currentLimit)
         motor.setTargetVelocity(0)
         motor.setAcceleration(5)
         motor.setFanMode(FanMode.FAN_MODE_ON)#FAN_MODE_AUTO
+        newer.append(motor)
+        print("current motor", motor)
+        print("current array ", newer)
 
 
 def on_press(key):
@@ -317,15 +323,15 @@ def main():
         print(f"\nSuccessfully initialized!\n")
         listener = keyboard.Listener(on_press=on_press, on_release=on_release) 
         listener.start()
-
-        claw = RCServo()
-        claw.setChannel(0)
-        claw.setHubPort(0)
-        claw.setDeviceSerialNumber(VHubSerial_servo)
-        claw.openWaitForAttachment(1000)
-        claw.setVoltage(RCServoVoltage.RCSERVO_VOLTAGE_7_4V)
-        claw.setMinPulseWidth(500)
-        claw.setMaxPulseWidth(2500)
+        print("before claw")
+        # claw = RCServo()
+        # claw.setChannel(0)
+        # claw.setHubPort(0)
+        # claw.setDeviceSerialNumber(VHubSerial_servo)
+        # claw.openWaitForAttachment(1000)
+        # claw.setVoltage(RCServoVoltage.RCSERVO_VOLTAGE_7_4V)
+        # claw.setMinPulseWidth(500)
+        # claw.setMaxPulseWidth(2500)
 
         
         leftSideDriveMotors.setHubPort(0)
@@ -342,6 +348,12 @@ def main():
         connect_motor(bristleMotor)
         init_motor(bristleMotor, 10)
 
+        
+        # newer = [leftSideDriveMotors,rightSideDriveMotors,leftWinchMotor,bristleMotor]
+        print("finished initaialinzing HELLOOOO")
+        print(newer)
+        pollerSystem(newer)
+
         # Main loop of code, stopFlag becomes True when 'p' is pressed 
         while(stopFlag == False): 
             time.sleep(0.1)
@@ -350,8 +362,6 @@ def main():
         print() 
         print("PhidgetException " + str(ex.code) + " (" + ex.description + "): " + ex.details)
         print(f"Successfully quit program.\n\nGoodbye!\n")
-    
-    pollerSystem()
 
 
 if __name__ == "__main__": 
