@@ -82,7 +82,7 @@ def connect_motor(motor):
 def init_motor(motor, currentLimit):
     print("motors,", motor.getAttached())
     if motor.getAttached():
-        motor.setDeviceSerialNumber(697270)
+        motor.setDeviceSerialNumber(697178)
         motor.setCurrentLimit(currentLimit)
         motor.setTargetVelocity(0)
         motor.setAcceleration(5)
@@ -349,13 +349,13 @@ def main():
 
         
         # newer = [leftSideDriveMotors,rightSideDriveMotors,leftWinchMotor,bristleMotor]
-        print("finished initaialinzing HELLOOOO")
-        print(newer)
-        pollerSystem(newer)
+        # moving the poller over to the while loop instead
+        # pollerSystem(newer)
 
         # Main loop of code, stopFlag becomes True when 'p' is pressed 
         while(stopFlag == False): 
             time.sleep(0.1)
+            pollerSystem(newer)
     except PhidgetException as ex: 
         traceback.print_exc() 
         print() 
