@@ -1,4 +1,4 @@
-***Motor Initialization and Monitoring System
+***Motor Initialization and Monitoring System***
 
 This script initializes and monitors motors connected to a system, providing feedback on their connection status and input voltage.
 
