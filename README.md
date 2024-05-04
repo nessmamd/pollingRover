@@ -1,10 +1,9 @@
-"""
-Motor Initialization and Monitoring System
+***Motor Initialization and Monitoring System
 
 This script initializes and monitors motors connected to a system, providing feedback on their connection status and input voltage.
 
 The script includes functions for initializing motors, monitoring their connection status and input voltage, and printing the status of each motor.
-
+'''
 Functions:
     def inputVoltage(number, identifier, theArray):
         Initializes a VoltageInput object for a motor and continuously monitors its input voltage.
@@ -60,4 +59,4 @@ Global Variables:
 
     motors: list
         List of DC motors.
-"""
+'''
