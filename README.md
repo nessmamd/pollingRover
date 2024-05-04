@@ -1,5 +1,6 @@
 ***Motor Initialization and Monitoring System***
 
+****run orientation.py as it calls on main.py****
 This script initializes and monitors motors connected to a system, providing feedback on their connection status and input voltage.
 
 The script includes functions for initializing motors, monitoring their connection status and input voltage, and printing the status of each motor.
